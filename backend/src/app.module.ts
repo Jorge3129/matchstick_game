@@ -8,7 +8,7 @@ import { SwiplModule } from './swipl/swipl.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://root:examplepass@mongodb:27017'),
+    MongooseModule.forRoot('mongodb://root:examplepass@localhost:27017'),
     PuzzleModule,
     SwiplModule,
   ],

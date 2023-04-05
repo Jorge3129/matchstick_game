@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { PuzzleService } from './service/puzzle.service';
@@ -14,4 +14,10 @@ import { PuzzleRepository } from './service/puzzle-repository';
   providers: [PuzzleService, PuzzleGeneratorService, PuzzleRepository],
   controllers: [PuzzleController],
 })
-export class PuzzleModule {}
+export class PuzzleModule implements OnModuleInit {
+  constructor(private readonly puzzleService: PuzzleService) {}
+
+  public async onModuleInit(): Promise<void> {
+    await this.puzzleService.findAllOrGenerate();
+  }
+}

@@ -6,6 +6,8 @@ async function bootstrap() {
 
   const PORT = 3000;
 
+  app.enableCors();
+
   await app.listen(PORT);
   console.log(`Started server on port ${PORT}`);
 }
