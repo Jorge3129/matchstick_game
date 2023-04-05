@@ -1,19 +1,29 @@
 @import "./coords.scss";
 
-.canvas {
-  // background-color: aliceblue;
+.container {
+  padding: 5em 0;
   position: relative;
-  height: 200px;
-  width: 500px;
-  margin: 20px;
+  font-size: 0.15vw;
+  width: fit-content;
 }
 
-.horizontal {
-  transform: rotate(90deg) translateX(-20px) translateY(-20px);
+.canvas {
+  position: relative;
+  margin: 20em;
+  height: 104em;
+  width: 404em;
 }
 
-.segment {
-  display: block;
+.bg-image {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  // background-color: #ddd;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+}
+
+.animate {
+  transition: 0.6s all ease-in-out;
+  z-index: 10;
 }

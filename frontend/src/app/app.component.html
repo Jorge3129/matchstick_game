@@ -1,9 +1,11 @@
-<h3>Matchstick game</h3>
+<main class="main">
+  <h3>Matchstick game</h3>
 
-<b>Current puzzles: {{ puzzles.length }}</b>
+  <b>Current puzzles: {{ puzzles.length }}</b>
 
-<button (click)="loadNextPuzzle()">Next</button>
+  <div class="btn-container">
+    <button mat-raised-button (click)="loadNextPuzzle()">Next</button>
+  </div>
 
-<ng-container *ngIf="puzzle">
   <app-equation-display [puzzle]="puzzle"></app-equation-display>
-</ng-container>
+</main>

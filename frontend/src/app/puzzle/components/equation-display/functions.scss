@@ -6,30 +6,6 @@
   @return $new-list;
 }
 
-@function f-fold($func, $list, $initial, $args...) {
-  $start: 1;
-  @if $initial == null {
-    $start: 2;
-    $initial: nth($list, 1);
-  }
-  $prev: $initial;
-  @for $i from $start through length($list) {
-    $next: nth($list, $i);
-    $prev: call(get-function($func), $prev, $next, $args...);
-  }
-  @return $prev;
-}
-
-@function f-filter($func, $list, $args...) {
-  $new-list: ();
-  @each $item in $list {
-    @if call(get-function($func), $item, $args...) {
-      $new-list: append($new-list, $item);
-    }
-  }
-  @return $new-list;
-}
-
 @function concat-lists($lists...) {
   $result: ();
   @each $list in $lists {

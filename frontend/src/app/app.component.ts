@@ -12,8 +12,6 @@ import { random } from 'lodash';
 export class AppComponent implements OnInit {
   public puzzle?: Puzzle;
 
-  public showSolution = false;
-
   public get puzzles() {
     return this.puzzleStore.puzzles$.value;
   }
@@ -25,12 +23,13 @@ export class AppComponent implements OnInit {
 
   public async ngOnInit(): Promise<void> {
     await this.puzzleApi.loadPuzzlesToStore();
+
+    this.loadNextPuzzle();
   }
 
   public loadNextPuzzle() {
     const index = random(0, this.puzzles.length - 1);
 
-    this.showSolution = false;
     this.puzzle = this.puzzles[index];
   }
 }

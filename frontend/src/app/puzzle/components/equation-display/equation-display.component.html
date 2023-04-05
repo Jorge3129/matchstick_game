@@ -1,30 +1,30 @@
-<button (click)="showSolution()">Show solution</button>
-<b *ngIf="puzzle?.puzzle as equation"
+<button mat-raised-button (click)="showSolution()">Show solution</button>
+<!-- <b *ngIf="puzzle?.puzzle as equation"
   >{{ equation.term1 }} {{ equation.operator }} {{ equation.term2 }} =
   {{ equation.result }}</b
->
-<div class="canvas">
-  <ng-container *ngIf="puzzle">
-    <img
-      [src]="'../../../../assets/matchstick.png'"
-      *ngFor="let matchId of matchStickPositions; let odd = odd"
-      class="segment match-stick"
-      matchStick
-      [id]="matchId.id"
-      [class]="'item-' + matchId.id"
-    />
+> -->
+<div class="container">
+  <img [src]="pictures.Paper1Picture" class="bg-image" />
 
-    <img
-      [src]="'../../../../assets/matchstick.png'"
-      *ngFor="let segment of getEqualsMatchSticks(); let odd = odd"
-      class="segment match-stick"
-      [ngClass]="{ horizontal: segment.horizontal }"
-      [ngStyle]="{
-        'left.px': segment.left,
-        'top.px': segment.top,
-        'width.px': segment.width,
-        'height.px': segment.height
-      }"
-    />
-  </ng-container>
+  <div class="canvas">
+    <ng-container *ngIf="puzzle">
+      <img
+        [src]="pictures.MatchStickPicture"
+        *ngFor="let matchId of matchStickPositions"
+        class="match-stick"
+        matchStick
+        [id]="matchId.id"
+        [class]="'item-' + matchId.id"
+      />
+
+      <img
+        [src]="pictures.MatchStickPicture"
+        *ngFor="let id of equalsMatchsticks"
+        matchStick
+        class="match-stick"
+        [id]="id"
+        [class]="'item-' + id"
+      />
+    </ng-container>
+  </div>
 </div>
