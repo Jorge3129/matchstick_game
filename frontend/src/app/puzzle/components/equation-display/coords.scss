@@ -1,0 +1,79 @@
+@import "./functions.scss";
+
+$single-number: (
+  (0, 0, 1, 0),
+  (0, 0, 0, 1),
+  (0, 1, 1, 1),
+  (1, 0, 1, 1),
+  (0, 1, 0, 2),
+  (0, 2, 1, 2),
+  (1, 1, 1, 2)
+);
+
+$operator-abs: ((0, 1, 1, 1), (0.5, 0.5, 0.5, 1.5));
+
+@function add-x-offset($coordinates, $offset) {
+  @return (
+    nth($coordinates, 1) + $offset,
+    nth($coordinates, 2),
+    nth($coordinates, 3) + $offset,
+    nth($coordinates, 4)
+  );
+}
+
+@function add-x-offset-3($coordinates) {
+  @return (add-x-offset($coordinates, 3));
+}
+
+@function add-x-offset-6($coordinates) {
+  @return (add-x-offset($coordinates, 6));
+}
+
+@function add-x-offset-1-5($coordinates) {
+  @return (add-x-offset($coordinates, 1.5));
+}
+
+$term-1: $single-number;
+$term-2: call(get-function(f-map), add-x-offset-3, $single-number);
+$result: call(get-function(f-map), add-x-offset-6, $single-number);
+$operator: call(get-function(f-map), add-x-offset-1-5, $operator-abs);
+
+$matchsticks: concat-lists($term-1, $operator, $term-2, $result);
+
+@function debug-type($value) {
+  @debug "The data type of is #{type-of($value)}.";
+  @return $value;
+}
+
+$cell-width: 50;
+
+@for $i from 1 through length($matchsticks) {
+  $el: nth($matchsticks, $i);
+
+  $x1: nth($el, 1);
+  $y1: nth($el, 2);
+  $x2: nth($el, 3);
+
+  $is-horizontal: $x1 != $x2;
+
+  $offset-x: if($is-horizontal, 2, -2);
+  $offset-y: if($is-horizontal, -2, 2);
+
+  .item-#{$i} {
+    left: #{$x1 * $cell-width + $offset-x}px;
+    top: #{$y1 * $cell-width + $offset-y}px;
+    width: 4px;
+    height: 46px;
+
+    @if $is-horizontal {
+      transform: rotate(90deg) translateX(-20px) translateY(-20px);
+    }
+  }
+}
+
+.removed {
+  left: 100%;
+  top: 25%;
+  width: 4px;
+  height: 46px;
+}

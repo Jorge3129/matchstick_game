@@ -1,0 +1,19 @@
+@import "./coords.scss";
+
+.canvas {
+  // background-color: aliceblue;
+  position: relative;
+  height: 200px;
+  width: 500px;
+  margin: 20px;
+}
+
+.horizontal {
+  transform: rotate(90deg) translateX(-20px) translateY(-20px);
+}
+
+.segment {
+  display: block;
+  position: absolute;
+  // background-color: #ddd;
+}
