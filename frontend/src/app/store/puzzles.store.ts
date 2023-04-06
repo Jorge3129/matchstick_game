@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
-import { Puzzle } from '../puzzle/models/puzzle.schema';
+import { Puzzle } from '../models/puzzle.schema';
 import { Injectable } from '@angular/core';
 
 @Injectable({

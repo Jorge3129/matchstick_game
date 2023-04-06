@@ -1,0 +1,25 @@
+.app-header {
+  width: 100%;
+  padding: 15px 20px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+
+  box-shadow: 3px 3px 8px rgba($color: #311, $alpha: 0.2);
+
+  position: relative;
+  z-index: 8;
+}
+
+.logo {
+  height: 45px;
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: 200;
+  text-shadow: 2px 2px #eee;
+  color: var(--violet-lighter);
+}

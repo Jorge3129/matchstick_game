@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PuzzleApiService } from './shared/services/puzzle-api.service';
-import { PuzzleStore } from './store/puzzles.store';
-import { Puzzle } from './puzzle/models/puzzle.schema';
-import { random } from 'lodash';
+import { Pictures } from './constants/pictures';
 
 @Component({
   selector: 'app-root',
@@ -10,26 +7,7 @@ import { random } from 'lodash';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public puzzle?: Puzzle;
+  public pictures = Pictures;
 
-  public get puzzles() {
-    return this.puzzleStore.puzzles$.value;
-  }
-
-  constructor(
-    private readonly puzzleApi: PuzzleApiService,
-    private readonly puzzleStore: PuzzleStore
-  ) {}
-
-  public async ngOnInit(): Promise<void> {
-    await this.puzzleApi.loadPuzzlesToStore();
-
-    this.loadNextPuzzle();
-  }
-
-  public loadNextPuzzle() {
-    const index = random(0, this.puzzles.length - 1);
-
-    this.puzzle = this.puzzles[index];
-  }
+  ngOnInit(): void {}
 }

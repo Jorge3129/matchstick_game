@@ -1,3 +1,5 @@
+@import "~highlight.js/styles/stackoverflow-light.css";
+
 html,
 body {
   height: 100%;
@@ -8,8 +10,32 @@ button {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+:root {
+  --violet: #3f335c;
+  // --violet-lighter: #614f8c;
+  // --violet-lighter: #755ab8;
+  --violet-lighter: #8960eb;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+app-root {
+  height: 100%;
+}
+
+.hljs-comment {
+  color: #7d8fa1;
+}
+
+// .hljs-symbol {
+// color: #6e9e13;
+// }
+
+.hljs {
+  // color: #62508f;
+  color: var(--violet);
 }

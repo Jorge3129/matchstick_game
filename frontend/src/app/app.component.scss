@@ -1,11 +1,23 @@
-.main {
+:host {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-.btn-container {
+.main {
+  flex: 1;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
+
+  position: relative;
+
+  .bg-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.6;
+    z-index: -10;
+  }
 }

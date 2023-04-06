@@ -1,0 +1,9 @@
+.link-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  .link.active {
+    color: var(--violet-lighter);
+  }
+}

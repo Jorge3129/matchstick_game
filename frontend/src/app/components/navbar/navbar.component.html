@@ -1,0 +1,12 @@
+<div class="link-list">
+  <div *ngFor="let route of routes">
+    <a
+      mat-button
+      class="link"
+      [routerLinkActive]="['active']"
+      [routerLink]="[route.path]"
+    >
+      {{ route.title }}
+    </a>
+  </div>
+</div>

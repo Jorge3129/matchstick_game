@@ -1,11 +1,6 @@
+<app-header></app-header>
 <main class="main">
-  <h3>Matchstick game</h3>
+  <img [src]="pictures.Paper1Picture" class="bg-image" />
 
-  <b>Current puzzles: {{ puzzles.length }}</b>
-
-  <div class="btn-container">
-    <button mat-raised-button (click)="loadNextPuzzle()">Next</button>
-  </div>
-
-  <app-equation-display [puzzle]="puzzle"></app-equation-display>
+  <router-outlet></router-outlet>
 </main>
