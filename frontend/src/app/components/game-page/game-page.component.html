@@ -1,0 +1,16 @@
+<div class="options">
+  <button mat-raised-button (click)="loadNextPuzzle()">Next puzzle</button>
+
+  <button
+    mat-raised-button
+    [disabled]="isShownSolution"
+    (click)="showSolution()"
+  >
+    Show solution
+  </button>
+</div>
+
+<app-equation-display
+  [showSolution$]="showSolution$"
+  [puzzle]="puzzle"
+></app-equation-display>
