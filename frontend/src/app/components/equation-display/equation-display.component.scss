@@ -1,0 +1,44 @@
+@import "./coords.scss";
+
+.container {
+  padding: 5em 0;
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.canvas {
+  position: relative;
+  margin: 20em;
+  height: 104em;
+  width: 404em;
+  transition: 0.4s all ease-in-out;
+}
+
+.animate {
+  transition: 0.6s all ease-in-out;
+}
+
+.forward {
+  z-index: 10;
+}
+
+@media (min-width: 960px) {
+  .canvas {
+    font-size: 2px;
+  }
+}
+
+@media (max-width: 959px) {
+  .canvas {
+    font-size: calc(0.2vw + 0.2px);
+  }
+}
+
+@media (max-width: 559px) {
+  .canvas {
+    font-size: calc(0.1vw + 0.2px);
+  }
+}

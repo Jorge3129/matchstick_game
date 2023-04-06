@@ -1,11 +1,8 @@
-<button mat-raised-button (click)="showSolution()">Show solution</button>
 <!-- <b *ngIf="puzzle?.puzzle as equation"
   >{{ equation.term1 }} {{ equation.operator }} {{ equation.term2 }} =
   {{ equation.result }}</b
 > -->
 <div class="container">
-  <img [src]="pictures.Paper1Picture" class="bg-image" />
-
   <div class="canvas">
     <ng-container *ngIf="puzzle">
       <img
@@ -15,6 +12,7 @@
         matchStick
         [id]="matchId.id"
         [class]="'item-' + matchId.id"
+        draggable="true"
       />
 
       <img

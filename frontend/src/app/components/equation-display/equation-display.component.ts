@@ -16,6 +16,8 @@ import { Puzzle } from '../../models/puzzle.schema';
 import { range } from 'lodash';
 import { MatchMove } from '../../models/match-move.interface';
 import { Pictures } from '../../constants/pictures';
+import { Observable, takeUntil } from 'rxjs';
+import { BaseComponent } from 'src/app/components/base-component';
 
 @Component({
   selector: 'app-equation-display',
@@ -23,9 +25,12 @@ import { Pictures } from '../../constants/pictures';
   styleUrls: ['./equation-display.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EquationDisplayComponent implements OnInit {
+export class EquationDisplayComponent extends BaseComponent implements OnInit {
   @Input()
   public puzzle?: Puzzle;
+
+  @Input()
+  public showSolution$!: Observable<void>;
 
   @ViewChildren(MatchstickDirective, { read: ElementRef })
   public itemList!: QueryList<ElementRef<HTMLSpanElement>>;
@@ -35,9 +40,15 @@ export class EquationDisplayComponent implements OnInit {
   public matchStickPositions: { id: number }[] = [];
   public equalsMatchsticks = [24, 25];
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.showSolution$.pipe(takeUntil(this.dispose$)).subscribe(() => {
+      this.showSolution();
+    });
+  }
 
   public ngOnChanges(changes: SimpleChanges) {
     if (changes['puzzle'] && this.puzzle) {
@@ -75,6 +86,7 @@ export class EquationDisplayComponent implements OnInit {
 
   private animate(el: HTMLElement, ms = 700) {
     el.classList.add('animate');
+    el.classList.add('forward');
     setTimeout(() => {
       el.classList.remove('animate');
     }, ms);
